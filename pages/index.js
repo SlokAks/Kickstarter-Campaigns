@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Card, Button } from "semantic-ui-react";
 import factory from '../ethereum/factory';
+import Layout from "../components/Layout";
 
 class CampaignIndex extends Component {
 
@@ -13,7 +14,7 @@ class CampaignIndex extends Component {
         return { campaigns };
         // Same as return { campaigns: campaigns };
     }
-
+ 
     renderCampaigns() {
         // like for loop - object based
         const items = this.props.campaigns.map(address => {
@@ -28,20 +29,21 @@ class CampaignIndex extends Component {
     }
     
     render() {
-        return <div>
-            <link
-                async
-                rel="stylesheet"
-                href="https://cdn.jsdelivr.net/npm/semantic-ui@2/dist/semantic.min.css"
-            />
-            <h3>Open Campaigns</h3>
-            {this.renderCampaigns()}
-            <Button
-                content="Create Campaign"
-                icon="add circle"
-                primary //Same as primary={true}
-            />
-        </div>
+        return (
+        <Layout>
+            <div>
+                <h3>Open Campaigns</h3>
+                <Button
+                    floated="right"
+                    content="Create Campaign"
+                    icon="add circle"
+                    primary //Same as primary={true}
+                />
+
+                {this.renderCampaigns()}
+            </div>
+        </Layout>
+        );
     }
 }
 
